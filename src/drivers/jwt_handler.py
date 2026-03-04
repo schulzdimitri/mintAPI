@@ -2,23 +2,25 @@ from datetime import datetime, timedelta, timezone
 
 import jwt
 
+from src.configs.jwt_configs import jwt_infos
+
 
 class JWTHandler:
     def create_jwt_token(self, body: dict = {}) -> str:
         token = jwt.encode(
             payload={
-                "exp": datetime.now(timezone.utc) + timedelta(hours=1),
+                "exp": datetime.now(timezone.utc) + timedelta(hours=jwt_infos["ACCESS_TOKEN_EXPIRE_HOURS"]),
                 **body
             },
-            key="5578dcf11fb3abf7491c4af06ec7db09a073963602b176f93765fa07355d1dde",
-            algorithm="HS256"
+            key=jwt_infos["JWT_KEY"],
+            algorithm=jwt_infos["ALGORITHM"]
         )
         return token
 
     def decode_jwt_token(self, token: str) -> dict:
         token_info = jwt.decode(
             jwt=token,
-            key="5578dcf11fb3abf7491c4af06ec7db09a073963602b176f93765fa07355d1dde",
-            algorithms=["HS256"]
+            key=jwt_infos["JWT_KEY"],
+            algorithms=jwt_infos["ALGORITHM"]
         )
         return token_info
