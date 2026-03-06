@@ -1,4 +1,4 @@
-from controllers.interfaces.balance_editor import BalanceEditorInterface
+from src.controllers.interfaces.balance_editor import BalanceEditorInterface
 
 from .http_types.http_request import HttpRequest
 from .http_types.http_response import HttpResponse
@@ -9,9 +9,9 @@ class BalanceEditorView(ViewInterface):
     def __init__(self, controller: BalanceEditorInterface) -> None:
         self.__controller = controller
         
-    def handle(self, http_request):
+    def handle(self, http_request: HttpRequest) -> HttpResponse:
         new_balance = http_request.body.get('new_balance')
-        user_id = http_request.body.param.get('user_id')
+        user_id = http_request.body.params.get('user_id')
         self.__validate_inputs(new_balance, user_id)
         
         response = self.__controller.edit_balance(new_balance, user_id)
