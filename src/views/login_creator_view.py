@@ -1,4 +1,5 @@
 from src.controllers.interfaces.login_creator import LoginCreatorInterface
+from src.errors.types.http_bad_request import HttpBadRequestError
 
 from .http_types.http_request import HttpRequest
 from .http_types.http_response import HttpResponse
@@ -24,4 +25,4 @@ class LoginCreatorView(ViewInterface):
             or not isinstance(username, str)
             or not isinstance(password, str)
         ):
-            raise ValueError('Invalid input')
+            raise HttpBadRequestError('Invalid input')
