@@ -1,4 +1,4 @@
-from .password_handler import PasswordHandler
+from ...src.drivers.password_handler import PasswordHandler
 
 
 def test_encrypt():

@@ -1,8 +1,9 @@
 import pytest
 
 from src.drivers.password_handler import PasswordHandler
+from src.errors.types.http_bad_request import HttpBadRequestError
 
-from .login_creator import LoginCreator
+from ...src.controllers.login_creator import LoginCreator
 
 username = "test_user"
 password = "password123"
@@ -25,6 +26,6 @@ def test_create_with_incorrect_password():
     login_creator = LoginCreator(MockUserRepository())
     response = login_creator.create(username, password)
     
-    with pytest.raises(ValueError):
+    with pytest.raises(HttpBadRequestError):
         login_creator.create(username, "wrong_password")
     
