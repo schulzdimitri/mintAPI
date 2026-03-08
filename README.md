@@ -62,6 +62,12 @@ mintAPI/
 │   │   ├── repositories/       # SQLite repository implementation
 │   │   └── settings/           # DB connection handler
 │   └── views/                  # Request/Response adapters
+├── tests/
+│   ├── controllers/            # Controller unit tests
+│   ├── drivers/                # Driver unit tests
+│   ├── models/                 # Repository unit tests
+│   └── views/                  # View unit tests
+├── pyproject.toml              # Project and tool configuration
 ├── run.py                      # Application entry point
 └── requirements.txt
 ```
@@ -225,7 +231,7 @@ Updates the balance of a user. Requires JWT authentication.
 pytest
 ```
 
-Tests are co-located with their respective modules following the `*_test.py` naming convention.
+Tests live in the `tests/` directory, mirroring the structure of `src/`. Test files follow the `test_*.py` naming convention. Configuration is managed via `pyproject.toml`.
 
 ---
 
