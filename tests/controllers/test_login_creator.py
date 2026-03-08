@@ -1,9 +1,8 @@
 import pytest
 
+from src.controllers.login_creator import LoginCreator
 from src.drivers.password_handler import PasswordHandler
 from src.errors.types.http_bad_request import HttpBadRequestError
-
-from ...src.controllers.login_creator import LoginCreator
 
 username = "test_user"
 password = "password123"

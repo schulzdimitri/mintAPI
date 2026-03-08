@@ -1,4 +1,4 @@
-from ...src.controllers.user_register import UserRegister
+from src.controllers.user_register import UserRegister
 
 
 class MockUserRepository():

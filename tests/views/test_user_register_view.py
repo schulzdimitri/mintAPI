@@ -1,8 +1,9 @@
 import pytest
 
-from ...src.views.http_types.http_request import HttpRequest
-from ...src.views.http_types.http_response import HttpResponse
-from ...src.views.user_register_view import UserRegisterView
+from src.errors.types.http_bad_request import HttpBadRequestError
+from src.views.http_types.http_request import HttpRequest
+from src.views.http_types.http_response import HttpResponse
+from src.views.user_register_view import UserRegisterView
 
 
 class MockController:
@@ -40,6 +41,6 @@ def test_handle_user_register_validation_error():
     mock_controller = MockController()
     user_register_view = UserRegisterView(controller=mock_controller)
     
-    with pytest.raises(ValueError):
+    with pytest.raises(HttpBadRequestError):
         user_register_view.handle(request)
     

@@ -1,4 +1,4 @@
-from ...src.drivers.jwt_handler import JWTHandler
+from src.drivers.jwt_handler import JWTHandler
 
 
 def test_create_jwt_token():

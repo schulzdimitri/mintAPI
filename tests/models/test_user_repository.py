@@ -1,6 +1,6 @@
 from unittest.mock import Mock
 
-from ...src.models.repositories.user_repository import UserRepository
+from src.models.repositories.user_repository import UserRepository
 
 
 class MockCursor:
